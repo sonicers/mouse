@@ -1,0 +1,14 @@
+{
+  "name": "mouse",
+  "version": "1.0.0",
+  "main": "deploy.js",
+  "repository": "git@github.com:sonicers/mouse.git",
+  "author": "iponkan <iponkan@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "deploy": "node deploy.js"
+  },
+  "dependencies": {
+    "anve-upload-upyun": "^1.0.8"
+  }
+}
