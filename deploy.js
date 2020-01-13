@@ -3,7 +3,7 @@ const domain = 'https://uss.sonicers.com';
 // 云存储服务名
 const server = 'static-sonicers';
 //上传到服务器的文件夹路径
-const pathInServer = '/fulingongyu';
+const pathInServer = '/mouse';
 
 
 const UpyunUpload = require('anve-upload-upyun');
