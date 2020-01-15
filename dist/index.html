@@ -106,23 +106,14 @@
         ["img/ex_10.png", "img/q_10.png"]
     ];
 
-    function autoPlayAudio() {
-        wx.config({
-            // 配置信息, 即使不正确也能使用 wx.ready
-            debug: false,
-            appId: '',
-            timestamp: 1,
-            nonceStr: '',
-            signature: '',
-            jsApiList: []
-        });
-        wx.ready(function () {
-            document.getElementById('audio').play();
-            isPlaying = true
-        });
+    function autoplay() {
+        document.getElementById("audio").play();
+        isPlaying = true
     }
 
-    autoPlayAudio()
+    document.addEventListener("WeixinJSBridgeReady", function () {
+        autoplay();
+    }, false);
 
     rem();
     window.addEventListener('deviceorientation', handleOrientation, false);//转动
