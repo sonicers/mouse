@@ -3,7 +3,7 @@ const thumbnail = "https://uss.sonicers.com/mouse/img/thumbnail.jpg"
 
 //随机分享享标题
 const shareT = [
-    '鼠年抽年签'
+    '快来抽闽南语年签，我们闽南人自己的年味'
 ]
 
 //随机分享文案，个数必须与分享标题一致，不想一致自己改代码
