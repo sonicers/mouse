@@ -32,6 +32,11 @@
             <img src="img/aq.png" class="lot_list wobble" style="left: 44%;z-index: 97;width: 29%;bottom: -1.5rem;"/>
         </div>
     </div>
+    <div id="mask"
+         style="position: absolute;height: 100%;width: 100%;top: 0;z-index: 99999;background: #000000;opacity: 0.8;display: none;">
+
+    </div>
+    <img src="img/share_02.png" id="share_prompt"/>
     <div id="show" style="position: absolute;height: 100%;top: 0;width: 100%;z-index: 999;">
 
         <img src="img/6.png" class="jieqian" id="lot"
@@ -79,6 +84,9 @@
     var againDom = document.getElementById("again");
     var exDom = document.getElementById("ex_img");
     var qDom = document.getElementById("lot");
+    var shareDom = document.getElementById("share");
+    var sharePrompt = document.getElementById("share_prompt");
+    var maskDom = document.getElementById("mask");
     var THRESHOLD = 1000;
     var THRESHOLD_1 = 100;//兼容低版本
     var preX = preY = preZ = x = y = z = 0;
@@ -125,6 +133,18 @@
         alert('该换手机了,要不女票都被拐跑了');
     }
 
+    maskDom.addEventListener("touchstart", function () {//点击遮罩时，遮罩消失，分享缩小
+        this.style.display = "none";
+        sharePrompt.style.transform = "scale(0)";
+        sharePrompt.style.webkitTransform = "scale(0)";
+    })
+
+    shareDom.addEventListener("touchstart", function () {
+        sharePrompt.style.transform = "scale(1)";
+        sharePrompt.style.webkitTransform = "scale(1)";
+        maskDom.style.display = "block";
+    }, false);
+
     Array.prototype.forEach.call(jieqianDom, function (e) {
         //console.log(e)
         //e.onclick=fade;
@@ -139,6 +159,9 @@
     function again() {
         showDom.style.transform = "scale(0)";
         showDom.style.webkitTransform = "scale(0)";
+        sharePrompt.style.transform = "scale(0)";
+        sharePrompt.style.webkitTransform = "scale(0)";
+        maskDom.style.display = "none";
         window.addEventListener('devicemotion', shakeEventHandler, false);//监听的是加速度变化
     }
 
