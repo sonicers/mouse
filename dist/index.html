@@ -382,6 +382,17 @@
             </a>
         </div>
     </div>
+
+    <img id="music"
+         src="img/music.svg"
+         style="width: 43.3929px; height: 43.3929px; right: 21.6964px; top: 21.6964px; opacity: 1; position: absolute; display: block; z-index: 1000000; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"
+    />
+
+    <audio id="audio"
+           src="music/bg.mp3"
+           loop="loop"
+           autoplay="autoplay"
+    ></audio>
 </div>
 <div id="container_2" style="height: 100%;background: gray;">
     <p class="prompt" style="font-size: 40px;text-align: center;">请用竖屏展示</p>
@@ -400,6 +411,8 @@
     var THRESHOLD_1 = 100;//兼容低版本
     var preX = preY = preZ = x = y = z = 0;
     var preTime = 0;
+    var isPlaying = true
+    var musicDom = document.getElementById("music");
     var exArr = [
         ["img/ex_1.png", "img/q_1.png"],
         ["img/ex_2.png", "img/q_2.png"],
@@ -412,13 +425,24 @@
         ["img/ex_9.png", "img/q_9.png"],
         ["img/ex_10.png", "img/q_10.png"]
     ];
-    var audio = new Audio();//创建音乐对象
-    audio.src = "music/bg.mp3";
-    audio.addEventListener("loadedmetadata", function () {
-        audio.loop = true;//设置循环播放
-        audio.volume = 1;//设置音量大小0-1
-        audio.play();//播放音乐
-    })
+
+    function autoPlayAudio() {
+        wx.config({
+            // 配置信息, 即使不正确也能使用 wx.ready
+            debug: false,
+            appId: '',
+            timestamp: 1,
+            nonceStr: '',
+            signature: '',
+            jsApiList: []
+        });
+        wx.ready(function () {
+            document.getElementById('audio').play();
+            isPlaying = true
+        });
+    }
+
+    autoPlayAudio()
 
     rem();
     window.addEventListener('deviceorientation', handleOrientation, false);//转动
@@ -434,6 +458,8 @@
         //e.onclick=fade;
         e.addEventListener("touchstart", fade, false);
     })
+
+    musicDom.addEventListener("touchstart", audioswitch, false);
 
     //againDom.onclick=again;
     againDom.addEventListener("touchstart", again, false);
@@ -543,6 +569,33 @@
         var htmlWidth = htmlDom.clientWidth;
         var fontSize = (htmlWidth - 320) * add + 16;
         htmlDom.style.fontSize = fontSize + "px";
+    }
+
+    function audioswitch() {
+        if (isPlaying) {
+            stop();
+        } else {
+            play();
+        }
+    }
+
+    function play() {
+        var audio = document.getElementById('audio');
+        if (!this.isPlaying) {
+            audio.play();
+            this.isPlaying = true;
+            musicDom.src = "img/music.svg"
+        }
+    }
+
+    function stop() {
+        var audio = document.getElementById('audio');
+        if (isPlaying) {
+            audio.pause();
+            musicDom.src = "img/mute.svg"
+            audio.currentTime = 0;
+            isPlaying = false;
+        }
     }
 </script>
 </html>
