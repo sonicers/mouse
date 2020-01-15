@@ -25,7 +25,7 @@ window.shareData = {
     timelineTitle: shareT[randomShare],
 
     callback: function (type) {//分享成功回调，可以在这里做统计
-
+        console.log("分享成功==========", type)
     }
 }
 
@@ -35,13 +35,8 @@ function refreshShareData() {
             reqUrl: window.location.href
         }
     }).then((res) => {
-        console.log("res=========", res)
         let data = res.data
         console.log("data==========", data)
-        console.log("data.appId==========", data.appId)
-        console.log("data.timestamp==========", data.timestamp)
-        console.log("data.nonceStr==========", data.nonceStr)
-        console.log("data.signature==========", data.signature)
         wx.config({
             debug: false, // 开启调试模式
             appId: data.appId, // 必填，公众号的唯一标识
@@ -49,9 +44,8 @@ function refreshShareData() {
             nonceStr: data.nonceStr, // 必填，生成签名的随机串
             signature: data.signature, // 必填，签名，见附录1
             jsApiList: [
-                'onMenuShareTimeline',
-                'onMenuShareAppMessage',
-                'onMenuShareQQ',
+                'updateTimelineShareData',
+                'updateAppMessageShareData',
                 'onMenuShareWeibo'
             ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
         })
@@ -60,51 +54,32 @@ function refreshShareData() {
     })
     wx.ready(function () {
 
-        wx.onMenuShareTimeline({
+        wx.updateTimelineShareData({//朋友圈和QQ空间
             title: window.shareData.timelineTitle,
-            link: window.shareData.url,
+            link: window.shareData.url,// 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: window.shareData.picUrl,
             success: function () {
                 window.shareData.callback("sharetimeline")
-            },
-            cancel: function () {
             }
         })
 
-        wx.onMenuShareAppMessage({
+        wx.updateAppMessageShareData({//QQ和微信
             title: window.shareData.title,
             desc: window.shareData.desc,
             link: window.shareData.url,
             imgUrl: window.shareData.picUrl,
             success: function () {
                 window.shareData.callback("shareappmessage")
-            },
-            cancel: function () {
             }
         })
 
-        wx.onMenuShareQQ({
-            title: window.shareData.title,
-            desc: window.shareData.desc,
-            link: window.shareData.url,
-            imgUrl: window.shareData.picUrl,
-            success: function () {
-                window.shareData.callback("shareqq")
-            },
-            cancel: function () {
-                // 用户取消分享后执行的回调函数
-            }
-        })
-        wx.onMenuShareWeibo({
+        wx.onMenuShareWeibo({//微博
             title: window.shareData.title,
             desc: window.shareData.desc,
             link: window.shareData.url,
             imgUrl: window.shareData.picUrl,
             success: function () {
                 window.shareData.callback("shareweibo")
-            },
-            cancel: function () {
-                // 用户取消分享后执行的回调函数
             }
         })
     })
