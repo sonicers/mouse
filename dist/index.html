@@ -78,11 +78,19 @@
 
     <div id="create"
          class="c_create">
+        <div style="text-align: center;">
+            <img src="img/close.png" id="iv_create_close" style="width: 10%; ">
+        </div>
         <p>长按保存图片！</p>
-        <img id="img"/>
+        <div style="text-align: center;">
+            <img id="img"/>
+        </div>
+        <div style="text-align: center;">
+            <img src="img/qr_code.png" style="width: 30%;"/>
+        </div>
     </div>
 
-    <audio id="audio"
+    <audio id=" audio"
            src="music/bg.mp3"
            loop="loop"
            autoplay="autoplay"
@@ -106,6 +114,7 @@
     var sharePrompt = document.getElementById("share_prompt");
     var maskDom = document.getElementById("mask");
     var createDom = document.getElementById("create");
+    var createCloseDom = document.getElementById("iv_create_close");
     var THRESHOLD = 1000;
     var THRESHOLD_1 = 100;//兼容低版本
     var preX = preY = preZ = x = y = z = 0;
@@ -149,8 +158,8 @@
         sharePrompt.style.webkitTransform = "scale(0)";
     })
 
-    createDom.addEventListener("click", function () {//点击遮罩时，遮罩消失，分享缩小
-        this.style.display = "none";
+    createCloseDom.addEventListener("click", function () {//点击遮罩时，遮罩消失，分享缩小
+        createDom.style.display = "none";
     })
 
     saveDom.addEventListener("touchstart", function () {
