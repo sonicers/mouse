@@ -50,6 +50,7 @@
 
             <div id="result"
                  style="display: block;width: 100%;">
+                <img style="width: 30%;" id="avatar"/>
                 <img src="img/ex_1.png" style="display: block;width: 100%;" id="ex_img"/>
             </div>
 
@@ -148,7 +149,7 @@
         sharePrompt.style.webkitTransform = "scale(0)";
     })
 
-    createDom.addEventListener("touchstart", function () {//点击遮罩时，遮罩消失，分享缩小
+    createDom.addEventListener("click", function () {//点击遮罩时，遮罩消失，分享缩小
         this.style.display = "none";
     })
 
@@ -164,6 +165,7 @@
 
         html2canvas(htmlDiv, {
             canvas: canvas,
+            useCORS: true,// 允许跨域
             onrendered: function (canvas) {
                 var myImage = canvas.toDataURL("image/png");
                 createDom.style.display = "block";
@@ -201,6 +203,7 @@
 
     function fade() {
         //console.log("hshs");
+        document.getElementById("avatar").setAttribute("src", localStorage['headimgurl']);
         explainDom.className = "bounceInLeft";
         Array.prototype.forEach.call(jieqianDom, function (e) {
             e.style.display = "none";
