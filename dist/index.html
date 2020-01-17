@@ -96,26 +96,34 @@
 </div>
 </body>
 <script type="text/javascript">
-    var container_1_dom = document.getElementById("container_1");
-    var container_2_dom = document.getElementById("container_2");
-    var showDom = document.getElementById("show");
-    var jieqianDom = document.getElementsByClassName("jieqian");
-    var explainDom = document.getElementById("explain");
-    var saveDom = document.getElementById("save");
-    var againDom = document.getElementById("again");
-    var exDom = document.getElementById("ex_img");
-    var qDom = document.getElementById("lot");
-    var shareDom = document.getElementById("share");
-    var sharePrompt = document.getElementById("share_prompt");
-    var maskDom = document.getElementById("mask");
-    var createDom = document.getElementById("create");
-    var createCloseDom = document.getElementById("iv_create_close");
-    var THRESHOLD = 1000;
-    var THRESHOLD_1 = 100;//兼容低版本
-    var preX = preY = preZ = x = y = z = 0;
-    var preTime = 0;
-    var musicDom = document.getElementById("div_music");
-    var exArr = [
+    const container_1_dom = document.getElementById("container_1");
+    const container_2_dom = document.getElementById("container_2");
+    const showDom = document.getElementById("show");
+    const jieqianDom = document.getElementsByClassName("jieqian");
+    const explainDom = document.getElementById("explain");
+    const saveDom = document.getElementById("save");
+    const againDom = document.getElementById("again");
+    const exDom = document.getElementById("ex_img");
+    const qDom = document.getElementById("lot");
+    const shareDom = document.getElementById("share");
+    const sharePrompt = document.getElementById("share_prompt");
+    const maskDom = document.getElementById("mask");
+    const createDom = document.getElementById("create");
+    const createCloseDom = document.getElementById("iv_create_close");
+    const musicDom = document.getElementById("div_music");
+
+    const THRESHOLD = 1000;
+    const THRESHOLD_1 = 100;//兼容低版本
+
+    let x = 0;
+    let y = 0;
+    let z = 0;
+    let preX = 0;
+    let preY = 0;
+    let preZ = 0;
+    let preTime = 0;
+
+    const exArr = [
         ["img/ex_1.png", "img/q_1.png"],
         ["img/ex_2.png", "img/q_2.png"],
         ["img/ex_3.png", "img/q_3.png"],
@@ -156,8 +164,8 @@
         /*
          * HTML转图片
          */
-        var htmlDiv = document.getElementById("result");
-        var canvas = document.createElement("canvas");
+        const htmlDiv = document.getElementById("result");
+        const canvas = document.createElement("canvas");
         canvas.width = window.screen.width;
         canvas.height = window.screen.height;
 
@@ -180,8 +188,6 @@
     }, false);
 
     Array.prototype.forEach.call(jieqianDom, function (e) {
-        //console.log(e)
-        //e.onclick=fade;
         e.addEventListener("touchstart", fade, false);
     })
 
@@ -197,7 +203,6 @@
     }
 
     function fade() {
-        //console.log("hshs");
         document.getElementById("avatar").setAttribute("src", localStorage['headimgurl']);
         explainDom.className = "bounceInLeft";
         Array.prototype.forEach.call(jieqianDom, function (e) {
@@ -222,7 +227,7 @@
 
     function test() {
         //alert("摇一摇有惊喜！");
-        var i = (Math.random() * 11) | 0;
+        const i = (Math.random() * 11) | 0;
         exDom.setAttribute("src", exArr[i][0]);
         qDom.setAttribute("src", exArr[i][1]);
         showDom.style.transform = "scale(1)";
@@ -233,7 +238,6 @@
         })
         window.removeEventListener('devicemotion', shakeEventHandler, false);
         preX = preY = preZ = x = y = z = 0;//参数全部重置，否则可能和上次摇一摇的结果有关联
-        accelerationDiff = 0;//置0
     }
 
     function shakeEventHandler(event) {//摇一摇函数
@@ -248,14 +252,14 @@
             y = acceleration.y;
             z = acceleration.z;
 
-            var accelerationDiff = Math.abs(x + y + z - preX - preY - preZ) / diffTime * 10000;
-            var ua = navigator.userAgent;
+            let accelerationDiff = Math.abs(x + y + z - preX - preY - preZ) / diffTime * 10000;
+            let ua = navigator.userAgent;
             if (/Android (\d+\.\d+)/.test(ua)) {//获取安卓系统号
-                var version = parseFloat(RegExp.$1);
+                const version = parseFloat(RegExp.$1);
                 if (version <= 5.1) {//如果版本号小于5.1的话
                     if (accelerationDiff > THRESHOLD_1) {
 //				           alert("摇一摇有惊喜！");
-                        var i = (Math.random() * 11) | 0;
+                        const i = (Math.random() * 11) | 0;
                         exDom.setAttribute("src", exArr[i][0]);
                         qDom.setAttribute("src", exArr[i][1]);
                         showDom.style.transform = "scale(1)";
@@ -283,32 +287,28 @@
                 })
                 window.removeEventListener('devicemotion', shakeEventHandler, false);
                 preX = preY = preZ = x = y = z = 0;//参数全部重置，否则可能和上次摇一摇的结果有关联
-                accelerationDiff = 0;//置0
             }
-//		        preX = x;
-//		        preY = y;
-//		        preZ = z;
         }
     }
 
     function rem() {//响应式函数
-        var add = 0.05;//(96-16)/(1920-320)
-        var htmlDom = document.getElementsByTagName("html")[0];
-        var htmlWidth = htmlDom.clientWidth;
-        var fontSize = (htmlWidth - 320) * add + 16;
+        const add = 0.05//(96-16)/(1920-320)
+        const htmlDom = document.getElementsByTagName("html")[0]
+        const htmlWidth = htmlDom.clientWidth
+        const fontSize = (htmlWidth - 320) * add + 16
         htmlDom.style.fontSize = fontSize + "px";
     }
 
     function autoplay() {
 
-        var x = document.getElementById("audio");
+        var audioDom = document.getElementById("audio");
 
         musicDom.addEventListener("click", function () {
             musicDom.classList.toggle('c_rotate')
             if (musicDom.classList.contains('c_rotate')) {
-                x.play();
+                audioDom.play();
             } else {
-                x.pause();
+                audioDom.pause();
             }
         })
     }
