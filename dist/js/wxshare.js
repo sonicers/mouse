@@ -1,5 +1,3 @@
-const axios = require('axios')
-
 //分享缩略图
 const thumbnail = "https://uss.sonicers.com/mouse/img/thumbnail.jpg"
 
