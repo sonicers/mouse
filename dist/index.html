@@ -9,7 +9,7 @@
     <script src="https://res2.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
     <script src="js/wxshare.js"></script>
     <script src="js/html2canvas.js"></script>
-    <!--    <script src="js/weicat.js"></script>-->
+    <script src="js/weicat.js"></script>
 </head>
 <body style="height: 100%;position: relative;overflow: hidden;">
 <div id="container_1" style="height: 100%;display: block;position: relative;overflow: hidden;">
@@ -50,19 +50,23 @@
 
             <div id="result"
                  style="display: block;width: 100%;">
-                <img style="width: 30%;" id="avatar"/>
-                <img src="img/ex_1.png" style="display: block;width: 100%;" id="ex_img"/>
+                <img style="width: 20%;display: inline-block;" id="avatar"/>
+                <div style="text-align: center;">
+                    <img src="img/ex_1.png" style="display: inline-block;width: 80%;" id="ex_img"/>
+                </div>
+
+                <img src="img/qr_code.png" style="width: 20%;display: inline-block;margin-top: 15px;"/>
             </div>
 
-            <a href="javascript:;" style="display: inline-block;width: 30%;margin-top: 25px;" id="save">
+            <a style="display: inline-block;width: 20%;margin-top: 25px;" id="save">
                 <img src="img/11_06.png" style="display: block;width: 100%;"/>
             </a>
 
-            <a href="javascript:;" style="display: inline-block;width: 30%;margin-top: 25px;margin-right: 30px;"
+            <a style="display: inline-block;width: 20%;margin-top: 25px;margin-left: 15px;margin-right: 15px;"
                id="again">
                 <img src="img/11_07.png" style="display: block;width: 100%;"/>
             </a>
-            <a href="javascript:;" style="display: inline-block;width: 30%;margin-top: 25px;" id="share">
+            <a style="display: inline-block;width: 20%;margin-top: 25px;" id="share">
                 <img src="img/11_09.png" style="display: block;width: 100%;"/>
             </a>
         </div>
@@ -70,10 +74,10 @@
 
     <img id="music"
          src="img/music.svg"
-         class="music"/>
+         class="c_music"/>
 
     <div id="mask"
-         class="mask">
+         class="c_mask">
     </div>
 
     <div id="create"
@@ -84,9 +88,6 @@
         <p>长按保存图片！</p>
         <div style="text-align: center;">
             <img id="img"/>
-        </div>
-        <div style="text-align: center;">
-            <img src="img/qr_code.png" style="width: 30%;"/>
         </div>
     </div>
 
@@ -162,7 +163,7 @@
         createDom.style.display = "none";
     })
 
-    saveDom.addEventListener("touchstart", function () {
+    saveDom.addEventListener("click", function () {
         createDom.style.display = "block";
         /*
          * HTML转图片
@@ -184,7 +185,7 @@
 
     })
 
-    shareDom.addEventListener("touchstart", function () {
+    shareDom.addEventListener("click", function () {
         sharePrompt.style.transform = "scale(1)";
         sharePrompt.style.webkitTransform = "scale(1)";
         maskDom.style.display = "block";
@@ -196,10 +197,10 @@
         e.addEventListener("touchstart", fade, false);
     })
 
-    musicDom.addEventListener("touchstart", audioswitch, false);
+    musicDom.addEventListener("click", audioswitch, false);
 
     //againDom.onclick=again;
-    againDom.addEventListener("touchstart", again, false);
+    againDom.addEventListener("click", again, false);
 
     function again() {
         showDom.style.transform = "scale(0)";
