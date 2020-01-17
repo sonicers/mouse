@@ -365,3 +365,30 @@ body, p {
     display: inline-block;
     vertical-align: middle;
 }
+
+.music {
+    width: 43.3929px;
+    height: 43.3929px;
+    right: 21.6964px;
+    top: 21.6964px;
+    opacity: 1;
+    position: absolute;
+    /*不显示*/
+    display: none;
+    z-index: 1000000;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.mask {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    z-index: 99999;
+    background: #000000;
+    opacity: 0.8;
+    display: none;
+}
