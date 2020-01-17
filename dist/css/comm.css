@@ -366,14 +366,49 @@ body, p {
     height: 43.3929px;
     right: 21.6964px;
     top: 21.6964px;
+    background-image: url(../img/music.svg);
+    background-size: contain;
     opacity: 1;
     position: absolute;
-    display: block;
     z-index: 1000000;
     touch-action: pan-y;
     user-select: none;
     -webkit-user-drag: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.c_rotate {
+    -webkit-animation: rotating 5s linear infinite;
+    -moz-animation: rotating 5s linear infinite;
+    -o-animation: rotating 5s linear infinite;
+    animation: rotating 5s linear infinite
+}
+
+@-webkit-keyframes rotating {
+    from {
+        -webkit-transform: rotate(0)
+    }
+    to {
+        -webkit-transform: rotate(360deg)
+    }
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0)
+    }
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+@-moz-keyframes rotating {
+    from {
+        -moz-transform: rotate(0)
+    }
+    to {
+        -moz-transform: rotate(360deg)
+    }
 }
 
 .c_mask {

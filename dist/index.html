@@ -72,9 +72,9 @@
         </div>
     </div>
 
-    <img id="music"
-         src="img/music.svg"
-         class="c_music"/>
+    <div id="div_music" class="c_music c_rotate">
+        <audio loop src="music/bg.mp3" id="audio" preload="auto"></audio>
+    </div>
 
     <div id="mask"
          class="c_mask">
@@ -90,12 +90,6 @@
             <img id="img"/>
         </div>
     </div>
-
-    <audio id="audio"
-           src="music/bg.mp3"
-           loop="loop"
-           autoplay="autoplay"
-    ></audio>
 </div>
 <div id="container_2" style="height: 100%;background: gray;">
     <p class="prompt" style="font-size: 40px;text-align: center;">请用竖屏展示</p>
@@ -120,8 +114,7 @@
     var THRESHOLD_1 = 100;//兼容低版本
     var preX = preY = preZ = x = y = z = 0;
     var preTime = 0;
-    var isPlaying = true
-    var musicDom = document.getElementById("music");
+    var musicDom = document.getElementById("div_music");
     var exArr = [
         ["img/ex_1.png", "img/q_1.png"],
         ["img/ex_2.png", "img/q_2.png"],
@@ -135,13 +128,8 @@
         ["img/ex_10.png", "img/q_10.png"]
     ];
 
-    function autoplay() {
-        document.getElementById("audio").play();
-        isPlaying = true
-    }
-
     document.addEventListener("WeixinJSBridgeReady", function () {
-        autoplay();
+        autoplay()
     }, false);
 
     rem();
@@ -197,9 +185,6 @@
         e.addEventListener("touchstart", fade, false);
     })
 
-    musicDom.addEventListener("click", audioswitch, false);
-
-    //againDom.onclick=again;
     againDom.addEventListener("click", again, false);
 
     function again() {
@@ -256,6 +241,7 @@
         var curTime = new Date().getTime();
         var diffTime = curTime - preTime;
 
+        // alert("diffTime！" + diffTime);
         if (diffTime > 100) { //应该可以用setinterval替换
             preTime = curTime;
             x = acceleration.x;
@@ -313,31 +299,18 @@
         htmlDom.style.fontSize = fontSize + "px";
     }
 
-    function audioswitch() {
-        if (isPlaying) {
-            stop();
-        } else {
-            play();
-        }
-    }
+    function autoplay() {
 
-    function play() {
-        var audio = document.getElementById('audio');
-        if (!this.isPlaying) {
-            audio.play();
-            this.isPlaying = true;
-            musicDom.src = "img/music.svg"
-        }
-    }
+        var x = document.getElementById("audio");
 
-    function stop() {
-        var audio = document.getElementById('audio');
-        if (isPlaying) {
-            audio.pause();
-            musicDom.src = "img/mute.svg"
-            audio.currentTime = 0;
-            isPlaying = false;
-        }
+        musicDom.addEventListener("click", function () {
+            musicDom.classList.toggle('c_rotate')
+            if (musicDom.classList.contains('c_rotate')) {
+                x.play();
+            } else {
+                x.pause();
+            }
+        })
     }
 </script>
 </html>
