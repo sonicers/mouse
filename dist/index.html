@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/jquery-1.8.3.min.js"></script>
-    <script src="js/weicat.js"></script>
     <title>抽年签</title>
     <link rel="stylesheet" type="text/css" href="css/comm.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://res2.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
     <script src="js/wxshare.js"></script>
+    <script src="js/html2canvas.js"></script>
+    <script src="js/weicat.js"></script>
 </head>
 <body style="height: 100%;position: relative;overflow: hidden;">
 <div id="container_1" style="height: 100%;display: block;position: relative;overflow: hidden;">
@@ -35,10 +34,6 @@
             <img src="img/aq.png" class="lot_list wobble" style="left: 44%;z-index: 97;width: 29%;bottom: -1.5rem;"/>
         </div>
     </div>
-    <div id="mask"
-         style="position: absolute;height: 100%;width: 100%;top: 0;z-index: 99999;background: #000000;opacity: 0.8;display: none;">
-
-    </div>
     <img src="img/share_02.png" id="share_prompt"/>
     <div id="show" style="position: absolute;height: 100%;top: 0;width: 100%;z-index: 999;">
 
@@ -52,7 +47,16 @@
         </a>
         <div id="explain" class=""
              style="position: absolute;transform: translateY(-50%) translateX(-200%);-webkit-transform: translateY(-50%) translateX(-200%);width: 90%;top: 50%;left: 50%;text-align: center;">
-            <img src="img/ex_1.png" style="display: block;width: 100%;" id="ex_img"/>
+
+            <div id="result"
+                 style="display: block;width: 100%;">
+                <img src="img/ex_1.png" style="display: block;width: 100%;" id="ex_img"/>
+            </div>
+
+            <a href="javascript:;" style="display: inline-block;width: 30%;margin-top: 25px;" id="save">
+                <img src="img/11_06.png" style="display: block;width: 100%;"/>
+            </a>
+
             <a href="javascript:;" style="display: inline-block;width: 30%;margin-top: 25px;margin-right: 30px;"
                id="again">
                 <img src="img/11_07.png" style="display: block;width: 100%;"/>
@@ -67,6 +71,16 @@
          src="img/music.svg"
          style="width: 43.3929px; height: 43.3929px; right: 21.6964px; top: 21.6964px; opacity: 1; position: absolute; display: block; z-index: 1000000; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"
     />
+
+    <div id="mask"
+         style="position: absolute;height: 100%;width: 100%;top: 0;z-index: 99999;background: #000000;opacity: 0.8;display: none;">
+    </div>
+
+    <div id="create"
+         style="position: absolute;height: 100%;width: 100%;top: 0;z-index: 99999;background: #000000;display: none;">
+        <h1>长按保存图片</h1>
+        <img id="img"/>
+    </div>
 
     <audio id="audio"
            src="music/bg.mp3"
@@ -84,12 +98,14 @@
     var showDom = document.getElementById("show");
     var jieqianDom = document.getElementsByClassName("jieqian");
     var explainDom = document.getElementById("explain");
+    var saveDom = document.getElementById("save");
     var againDom = document.getElementById("again");
     var exDom = document.getElementById("ex_img");
     var qDom = document.getElementById("lot");
     var shareDom = document.getElementById("share");
     var sharePrompt = document.getElementById("share_prompt");
     var maskDom = document.getElementById("mask");
+    var createDom = document.getElementById("create");
     var THRESHOLD = 1000;
     var THRESHOLD_1 = 100;//兼容低版本
     var preX = preY = preZ = x = y = z = 0;
@@ -131,6 +147,31 @@
         this.style.display = "none";
         sharePrompt.style.transform = "scale(0)";
         sharePrompt.style.webkitTransform = "scale(0)";
+    })
+
+    createDom.addEventListener("touchstart", function () {//点击遮罩时，遮罩消失，分享缩小
+        this.style.display = "none";
+    })
+
+    saveDom.addEventListener("touchstart", function () {
+        createDom.style.display = "block";
+        /*
+         * HTML转图片
+         */
+        var htmlDiv = document.getElementById("result");
+        var canvas = document.createElement("canvas");
+        canvas.width = window.screen.width;
+        canvas.height = window.screen.height;
+
+        html2canvas(htmlDiv, {
+            canvas: canvas,
+            onrendered: function (canvas) {
+                var myImage = canvas.toDataURL("image/png");
+                createDom.style.display = "block";
+                document.getElementById("img").setAttribute("src", myImage);
+            }
+        });
+
     })
 
     shareDom.addEventListener("touchstart", function () {
