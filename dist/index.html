@@ -111,6 +111,7 @@
     const createDom = document.getElementById("create");
     const createCloseDom = document.getElementById("iv_create_close");
     const musicDom = document.getElementById("div_music");
+    const audioDom = document.getElementById("audio");
 
     const THRESHOLD = 1000;
     const THRESHOLD_1 = 100;//兼容低版本
@@ -137,7 +138,7 @@
     ];
 
     document.addEventListener("WeixinJSBridgeReady", function () {
-        autoplay()
+        audioDom.play();
     }, false);
 
     rem();
@@ -186,6 +187,15 @@
         sharePrompt.style.webkitTransform = "scale(1)";
         maskDom.style.display = "block";
     }, false);
+
+    musicDom.addEventListener("click", function () {
+        musicDom.classList.toggle('c_rotate')
+        if (musicDom.classList.contains('c_rotate')) {
+            audioDom.play();
+        } else {
+            audioDom.pause();
+        }
+    })
 
     Array.prototype.forEach.call(jieqianDom, function (e) {
         e.addEventListener("touchstart", fade, false);
@@ -268,6 +278,7 @@
                         Array.prototype.forEach.call(jieqianDom, function (e) {
                             e.style.display = "inline-block";
                         })
+                        // wx.vibrateLong()
                         window.removeEventListener('devicemotion', shakeEventHandler, false);
                         preX = preY = preZ = x = y = z = 0;//参数全部重置，否则可能和上次摇一摇的结果有关联
                         accelerationDiff = 0;//置0
@@ -285,6 +296,7 @@
                 Array.prototype.forEach.call(jieqianDom, function (e) {
                     e.style.display = "inline-block";
                 })
+                // wx.vibrateLong()
                 window.removeEventListener('devicemotion', shakeEventHandler, false);
                 preX = preY = preZ = x = y = z = 0;//参数全部重置，否则可能和上次摇一摇的结果有关联
             }
@@ -297,20 +309,6 @@
         const htmlWidth = htmlDom.clientWidth
         const fontSize = (htmlWidth - 320) * add + 16
         htmlDom.style.fontSize = fontSize + "px";
-    }
-
-    function autoplay() {
-
-        var audioDom = document.getElementById("audio");
-
-        musicDom.addEventListener("click", function () {
-            musicDom.classList.toggle('c_rotate')
-            if (musicDom.classList.contains('c_rotate')) {
-                audioDom.play();
-            } else {
-                audioDom.pause();
-            }
-        })
     }
 </script>
 </html>
