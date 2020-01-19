@@ -384,6 +384,13 @@ body, p {
     animation: rotating 5s linear infinite
 }
 
+.c_rotate_pause {
+    -webkit-animation-play-state: paused;
+    -moz-animation-play-state: paused;
+    -o-animation: paused;
+    animation: paused
+}
+
 @-webkit-keyframes rotating {
     from {
         -webkit-transform: rotate(0)
