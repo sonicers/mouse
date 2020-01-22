@@ -64,8 +64,6 @@
                         <!-- <img src="img/qr_code.png" style="width: 20%;display: inline-block;margin-top: 15px;" /> -->
                     </div>
 
-
-
                     <div style="display: block;width: 100%;position: absolute;bottom: 0%;">
                         <a style="display: inline-block;width: 28%;bottom: 0%;" id="save">
                             <img src="img/11_06.png" style="display: block;width: 100%;" />
@@ -216,12 +214,14 @@
     againDom.addEventListener("click", again, false);
 
     function again() {
-        showDom.style.transform = "scale(0)";
-        showDom.style.webkitTransform = "scale(0)";
-        sharePrompt.style.transform = "scale(0)";
-        sharePrompt.style.webkitTransform = "scale(0)";
-        maskDom.style.display = "none";
-        window.addEventListener('devicemotion', shakeEventHandler, false);//监听的是加速度变化
+        const i = (Math.random() * 10) | 0;
+        exDom.setAttribute("src", exArr[i]);
+        // showDom.style.transform = "scale(0)";
+        // showDom.style.webkitTransform = "scale(0)";
+        // sharePrompt.style.transform = "scale(0)";
+        // sharePrompt.style.webkitTransform = "scale(0)";
+        // maskDom.style.display = "none";
+        // window.addEventListener('devicemotion', shakeEventHandler, false);//监听的是加速度变化
     }
 
     function fade() {
