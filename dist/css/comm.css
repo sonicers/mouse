@@ -46,7 +46,7 @@ body, p {
 
 #qian {
     position: absolute;
-    width: 71%;
+    width: 100%;
     bottom: 0;
     left: 0;
     right: 0;
@@ -60,7 +60,7 @@ body, p {
 
 #qian_text {
     position: absolute;
-    width: 74%;
+    width: 30%;
     left: 0;
     right: 0;
     bottom: .6rem;

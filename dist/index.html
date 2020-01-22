@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html style="height: 100%;">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -11,17 +12,18 @@
     <script src="js/html2canvas.js"></script>
     <script src="js/weicat.js"></script>
 </head>
+
 <body style="height: 100%;position: relative;overflow: hidden;">
-<div id="container_1" style="height: 100%;display: block;position: relative;overflow: hidden;">
-    <div id="main" style="position: relative;height: 100%;">
-        <img src="img/u.png" id="text" style="position: absolute;width: 100%;top: 7rem;z-index: 9;"/>
-        <img src="img/2.png" id="circle"/>
-        <img src="img/3.png" id="bottom"/>
-        <div id="qian" style="z-index: 10;">
-            <img src="img/s_0.png" id="qian_bg"/>
-            <img onclick="test()" src="img/5.png" id="qian_text"/>
-        </div>
-        <div class="lot_arr" style="z-index: 9;position: absolute;bottom: 0;width: 100%;">
+    <div id="container_1" style="height: 100%;display: block;position: relative;overflow: hidden;">
+        <div id="main" style="position: relative;height: 100%;">
+            <img src="img/u.png" id="text" style="position: absolute;width: 100%;bottom: 0rem;z-index: 9;" />
+            <!-- <img src="img/2.png" id="circle"/>
+        <img src="img/3.png" id="bottom"/> -->
+            <div id="qian" style="z-index: 10;">
+                <img src="img/s_0.png" id="qian_bg" />
+                <img onclick="test()" src="img/5.png" id="qian_text" />
+            </div>
+            <!-- <div class="lot_arr" style="z-index: 9;position: absolute;bottom: 0;width: 100%;">
             <img src="img/aq_1.png" class="lot_list wobble" style="left: 30%;z-index: 94;"/>
             <img src="img/aq_2.png" class="lot_list wobble" style="left: 48%;z-index: 93;width: 25%;"/>
             <img src="img/cy.png" class="lot_list bounce" style="left: 13%;width: 33%;z-index: 96;bottom: -1.5rem;"/>
@@ -32,68 +34,78 @@
                  style="left: 0;right: 0;margin: auto auto;bottom: 4rem;z-index: 92;width: 22%;"/>
             <img src="img/sy.png" class="lot_list bounce" style="right: 14%;bottom: -1.5rem;z-index: 95;width: 28%;"/>
             <img src="img/aq.png" class="lot_list wobble" style="left: 44%;z-index: 97;width: 29%;bottom: -1.5rem;"/>
+        </div> -->
         </div>
-    </div>
-    <img src="img/share_02.png" id="share_prompt"/>
-    <div id="show" style="position: absolute;height: 100%;top: 0;width: 100%;z-index: 999;">
+        <img src="img/share_02.png" id="share_prompt" />
+        <div id="show" style="position: absolute;height: 100%;top: 0;width: 100%;z-index: 999;">
 
-        <img src="img/6.png" class="jieqian" id="lot"
-             style="display: inline-block;height: 17.8rem;position: absolute;top: 5.2rem;left: 0;right: 0;margin: auto auto;"/>
+            <img src="img/6.png" class="jieqian" id="lot"
+                style="display: inline-block;height: 17.8rem;position: absolute;top: 5.2rem;left: 0;right: 0;margin: auto auto;opacity: 0;" />
 
-        <a href="javascript:;" id="jieqian" class="jieqian" style="width: 7rem;">
+            <!-- <a href="javascript:;" id="jieqian" class="jieqian" style="width: 7rem;">
             <img src="img/7.png"
                  style="display: inline-block;width: 1.2rem;animation: shake 2s linear infinite;-webkit-animation: shake 2s linear infinite;"/>
             <p style="margin-top: 10px;letter-spacing: 3px;">点击解签</p>
-        </a>
-        <div id="explain" class=""
-             style="position: absolute;transform: translateY(-50%) translateX(-200%);-webkit-transform: translateY(-50%) translateX(-200%);width: 90%;top: 50%;left: 50%;text-align: center;">
+        </a> -->
+            <div id="explain" class=""
+                style="position: absolute;transform: translateY(0%) translateX(0%);width: 100%;height:100%;left:0%;text-align: center;">
+                <img src="img/page2_bg.png"
+                    style="position: block;width: 100%;height: 100%;left:0%;position: absolute;" />
 
-            <div id="result"
-                 style="display: block;width: 100%;">
-                <img style="width: 20%;display: inline-block;" id="avatar"/>
-                <div style="text-align: center;">
-                    <img src="img/ex_1.png" style="display: inline-block;width: 80%;" id="ex_img"/>
+                <img src="img/page2_bottom_bg.png"
+                    style="width: 100%;height: auto;display: block;position: absolute;bottom: 0%;" />
+
+                <div style="display: block;width: 100%;height: 100%;position: absolute;">
+
+                    <div id="result" style="display: block;width: 100%;">
+                        <img src="img/qr_code.png" style="z-index:999;width: 15%;display: block;left:42.5%;position: absolute;top: 15%;" id="avatar" />
+                        <img src="img/ex_1.png" style="z-index:998;display: block;position: absolute;height: 72%;top: 8%;bottom: 20%;width: 72%;left: 14%;" id="ex_img" />
+
+                        <!-- <img src="img/qr_code.png" style="width: 20%;display: inline-block;margin-top: 15px;" /> -->
+                    </div>
+
+
+
+                    <div style="display: block;width: 100%;position: absolute;bottom: 0%;">
+                        <a style="display: inline-block;width: 28%;bottom: 0%;" id="save">
+                            <img src="img/11_06.png" style="display: block;width: 100%;" />
+                        </a>
+
+                        <a style="display: inline-block;width: 28%;bottom: 0%;margin-left: 12px;margin-right: 12px;margin-bottom: -10px;"
+                            id="again">
+                            <img src="img/11_07.png" style="display: block;width: 100%;" />
+                        </a>
+                        <a style="display: inline-block;width: 28%;bottom: 0%;" id="share">
+                            <img src="img/11_09.png" style="display: block;width: 100%;" />
+                        </a>
+                    </div>
+
+
                 </div>
 
-                <img src="img/qr_code.png" style="width: 20%;display: inline-block;margin-top: 15px;"/>
             </div>
+        </div>
 
-            <a style="display: inline-block;width: 28%;margin-top: 25px;" id="save">
-                <img src="img/11_06.png" style="display: block;width: 100%;"/>
-            </a>
+        <div id="div_music" class="c_music c_rotate">
+            <audio loop src="music/bg.mp3" id="audio" preload="auto"></audio>
+        </div>
 
-            <a style="display: inline-block;width: 28%;margin-top: 25px;margin-left: 12px;margin-right: 12px;"
-               id="again">
-                <img src="img/11_07.png" style="display: block;width: 100%;"/>
-            </a>
-            <a style="display: inline-block;width: 28%;margin-top: 25px;" id="share">
-                <img src="img/11_09.png" style="display: block;width: 100%;"/>
-            </a>
+        <div id="mask" class="c_mask">
+        </div>
+
+        <div id="create" class="c_create">
+            <div style="text-align: center;">
+                <img src="img/close.png" id="iv_create_close" style="width: 10%; ">
+            </div>
+            <p>长按保存图片！</p>
+            <div style="text-align: center;">
+                <img id="img" />
+            </div>
         </div>
     </div>
-
-    <div id="div_music" class="c_music c_rotate">
-        <audio loop src="music/bg.mp3" id="audio" preload="auto"></audio>
+    <div id="container_2" style="height: 100%;background: gray;">
+        <p class="prompt" style="font-size: 40px;text-align: center;">请用竖屏展示</p>
     </div>
-
-    <div id="mask"
-         class="c_mask">
-    </div>
-
-    <div id="create"
-         class="c_create">
-        <div style="text-align: center;">
-            <img src="img/close.png" id="iv_create_close" style="width: 10%; ">
-        </div>
-        <p>长按保存图片！</p>
-        <div style="text-align: center;">
-            <img id="img"/>
-        </div>
-    </div>
-</div>
-<div id="container_2" style="height: 100%;background: gray;">
-    <p class="prompt" style="font-size: 40px;text-align: center;">请用竖屏展示</p>
-</div>
 </body>
 <script type="text/javascript">
     const container_1_dom = document.getElementById("container_1");
@@ -104,7 +116,7 @@
     const saveDom = document.getElementById("save");
     const againDom = document.getElementById("again");
     const exDom = document.getElementById("ex_img");
-    const qDom = document.getElementById("lot");
+    // const qDom = document.getElementById("lot");
     const shareDom = document.getElementById("share");
     const sharePrompt = document.getElementById("share_prompt");
     const maskDom = document.getElementById("mask");
@@ -125,16 +137,16 @@
     let preTime = 0;
 
     const exArr = [
-        ["img/ex_1.png", "img/q_1.png"],
-        ["img/ex_2.png", "img/q_2.png"],
-        ["img/ex_3.png", "img/q_3.png"],
-        ["img/ex_4.png", "img/q_4.png"],
-        ["img/ex_5.png", "img/q_5.png"],
-        ["img/ex_6.png", "img/q_6.png"],
-        ["img/ex_7.png", "img/q_7.png"],
-        ["img/ex_8.png", "img/q_8.png"],
-        ["img/ex_9.png", "img/q_9.png"],
-        ["img/ex_10.png", "img/q_10.png"]
+        ["img/ex_1.jpg"],
+        ["img/ex_2.jpg"],
+        ["img/ex_3.jpg"],
+        ["img/ex_4.jpg"],
+        ["img/ex_5.jpg"],
+        ["img/ex_6.jpg"],
+        ["img/ex_7.jpg"],
+        ["img/ex_8.jpg"],
+        ["img/ex_9.jpg"],
+        ["img/ex_10.jpg"]
     ];
 
     document.addEventListener("WeixinJSBridgeReady", function () {
@@ -238,8 +250,8 @@
     function test() {
         //alert("摇一摇有惊喜！");
         const i = (Math.random() * 11) | 0;
-        exDom.setAttribute("src", exArr[i][0]);
-        qDom.setAttribute("src", exArr[i][1]);
+        exDom.setAttribute("src", exArr[i]);
+        // qDom.setAttribute("src", exArr[i][1]);
         showDom.style.transform = "scale(1)";
         showDom.style.webkitTransform = "scale(1)";
         explainDom.className = "";
@@ -268,10 +280,10 @@
                 const version = parseFloat(RegExp.$1);
                 if (version <= 5.1) {//如果版本号小于5.1的话
                     if (accelerationDiff > THRESHOLD_1) {
-//				           alert("摇一摇有惊喜！");
+                        //				           alert("摇一摇有惊喜！");
                         const i = (Math.random() * 11) | 0;
                         exDom.setAttribute("src", exArr[i][0]);
-                        qDom.setAttribute("src", exArr[i][1]);
+                        // qDom.setAttribute("src", exArr[i][1]);
                         showDom.style.transform = "scale(1)";
                         showDom.style.webkitTransform = "scale(1)";
                         explainDom.className = "";
@@ -289,7 +301,7 @@
                 //alert("摇一摇有惊喜！");
                 var i = (Math.random() * 11) | 0;
                 exDom.setAttribute("src", exArr[i][0]);
-                qDom.setAttribute("src", exArr[i][1]);
+                // qDom.setAttribute("src", exArr[i][1]);
                 showDom.style.transform = "scale(1)";
                 showDom.style.webkitTransform = "scale(1)";
                 explainDom.className = "";
@@ -311,4 +323,5 @@
         htmlDom.style.fontSize = fontSize + "px";
     }
 </script>
+
 </html>
