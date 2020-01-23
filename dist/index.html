@@ -55,7 +55,7 @@
                     <div id="result" style="display: block;width: 100%;height: 100%;position: absolute;">
                         <img src="img/page2_bg.png" style="position: block;width: 100%;height: 100%;left:0%;position: absolute;" />
                         <img src="img/qr_code.png" style="z-index:999;width: 15%;display: block;left:42.5%;position: absolute;top: 15%;" id="avatar" />
-                        <img src="img/ex_1.png" style="z-index:998;display: block;position: absolute;height: 72%;top: 8%;bottom: 20%;width: 72%;left: 14%;" id="ex_img" />
+                        <img src="img/page2_bg.png" style="z-index:998;display: block;position: absolute;height: 72%;top: 8%;bottom: 20%;width: 72%;left: 14%;" id="ex_img" />
 
                         <!-- <img src="img/qr_code.png" style="width: 20%;display: inline-block;margin-top: 15px;" /> -->
                     </div>
@@ -158,7 +158,12 @@
         ["img/ex_7.jpg"],
         ["img/ex_8.jpg"],
         ["img/ex_9.jpg"],
-        ["img/ex_10.jpg"]
+        ["img/ex_10.jpg"],
+        ["img/ex_11.jpg"],
+        ["img/ex_12.jpg"],
+        ["img/ex_13.jpg"],
+        ["img/ex_14.jpg"],
+        ["img/ex_15.jpg"],
     ];
 
     document.addEventListener("WeixinJSBridgeReady", function () {
@@ -225,7 +230,7 @@
     againDom.addEventListener("click", again, false);
 
     function again() {
-        const i = (Math.random() * 10) | 0;
+        const i = (Math.random() * 15) | 0;
         exDom.setAttribute("src", exArr[i]);
         exCreateDom.setAttribute("src", exArr[i]);
         document.getElementById("avatar").setAttribute("src", localStorage['headimgurl']);
@@ -263,7 +268,7 @@
 
     function test() {
         //alert("摇一摇有惊喜！");
-        const i = (Math.random() * 11) | 0;
+        const i = (Math.random() * 15) | 0;
         exDom.setAttribute("src", exArr[i]);
         exCreateDom.setAttribute("src", exArr[i]);
         document.getElementById("avatar").setAttribute("src", localStorage['headimgurl']);
@@ -298,7 +303,7 @@
                 if (version <= 5.1) {//如果版本号小于5.1的话
                     if (accelerationDiff > THRESHOLD_1) {
                         //				           alert("摇一摇有惊喜！");
-                        const i = (Math.random() * 11) | 0;
+                        const i = (Math.random() * 15) | 0;
                         exDom.setAttribute("src", exArr[i][0]);
                         exCreateDom.setAttribute("src", exArr[i]);
                         document.getElementById("avatar").setAttribute("src", localStorage['headimgurl']);
@@ -319,7 +324,7 @@
             }
             if (accelerationDiff > THRESHOLD) {
                 //alert("摇一摇有惊喜！");
-                var i = (Math.random() * 11) | 0;
+                var i = (Math.random() * 15) | 0;
                 exDom.setAttribute("src", exArr[i][0]);
                 document.getElementById("avatar_create").setAttribute("src", localStorage['headimgurl']);
                 exCreateDom.setAttribute("src", exArr[i]);
