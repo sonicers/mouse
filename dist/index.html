@@ -9,7 +9,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://res2.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
     <script src="js/wxshare.js"></script>
-    <script src="js/html2canvas.js"></script>
+    <script src="js/html2canvas.min.js"></script>
     <script src="js/weicat.js"></script>
 </head>
 
@@ -172,22 +172,15 @@
     saveDom.addEventListener("click", function () {
         document.getElementById("avatar").setAttribute("src", localStorage['headimgurl']);
         createDom.style.display = "block";
-        /*
-         * HTML转图片
-         */
-        const htmlDiv = document.getElementById("result");
-        const canvas = document.createElement("canvas");
-        canvas.width = window.screen.width;
-        canvas.height = window.screen.height;
-
-        html2canvas(htmlDiv, {
-            canvas: canvas,
-            useCORS: true,// 允许跨域
-            onrendered: function (canvas) {
-                var myImage = canvas.toDataURL("image/png");
+        html2canvas(document.getElementById("result"),{
+            scale: window.devicePixelRatio,
+            width: window.screen.width, //dom 原始宽度
+            height: window.screen.height,
+            useCORS: true // 【重要】开启跨域配置
+        }).then(function(canvas) {
+            var myImage = canvas.toDataURL("image/png");
                 createDom.style.display = "block";
                 document.getElementById("img").setAttribute("src", myImage);
-            }
         });
 
     })
