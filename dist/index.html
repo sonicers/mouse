@@ -105,6 +105,8 @@
                     id="ex_img_create" />
                 </div>
 
+                <img src="img/qr_code.png" style="z-index:999;width: 10%;display: block;left:45%;position: absolute;top: 18%;" id="avatar_create" />
+
             </div>
 
             <div style="display: block;text-align: center;position: absolute;z-index: 1001;"style="width: 100%;height:72%; text-align: center;">
@@ -225,6 +227,7 @@
         exDom.setAttribute("src", exArr[i]);
         exCreateDom.setAttribute("src", exArr[i]);
         document.getElementById("avatar").setAttribute("src", localStorage['headimgurl']);
+        document.getElementById("avatar_create").setAttribute("src", localStorage['headimgurl']);
         // showDom.style.transform = "scale(0)";
         // showDom.style.webkitTransform = "scale(0)";
         // sharePrompt.style.transform = "scale(0)";
@@ -262,6 +265,7 @@
         exDom.setAttribute("src", exArr[i]);
         exCreateDom.setAttribute("src", exArr[i]);
         document.getElementById("avatar").setAttribute("src", localStorage['headimgurl']);
+        document.getElementById("avatar_create").setAttribute("src", localStorage['headimgurl']);
         // qDom.setAttribute("src", exArr[i][1]);
         showDom.style.transform = "scale(1)";
         showDom.style.webkitTransform = "scale(1)";
@@ -296,6 +300,7 @@
                         exDom.setAttribute("src", exArr[i][0]);
                         exCreateDom.setAttribute("src", exArr[i]);
                         document.getElementById("avatar").setAttribute("src", localStorage['headimgurl']);
+                        document.getElementById("avatar_create").setAttribute("src", localStorage['headimgurl']);
                         // qDom.setAttribute("src", exArr[i][1]);
                         showDom.style.transform = "scale(1)";
                         showDom.style.webkitTransform = "scale(1)";
@@ -314,6 +319,7 @@
                 //alert("摇一摇有惊喜！");
                 var i = (Math.random() * 11) | 0;
                 exDom.setAttribute("src", exArr[i][0]);
+                document.getElementById("avatar_create").setAttribute("src", localStorage['headimgurl']);
                 exCreateDom.setAttribute("src", exArr[i]);
                 // qDom.setAttribute("src", exArr[i][1]);
                 showDom.style.transform = "scale(1)";
