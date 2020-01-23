@@ -97,15 +97,15 @@
             <p style="display: block;height:8%;text-align: center;">长按保存图片！</p>
             <div style="display: block;position: absolute;width: 100%;height:72%; text-align: center;z-index: 1000;" id="final">
                 <div style="z-index:100;display: block;position: absolute;width: 100%;height:100%; text-align: center;">
-                    <img src="img/page2_bg.png" style="display: block;position: absolute;width: 72%;height: 100%;top: 0%;bottom: 0%;left: 14%;right: 14%;" />
+                    <img src="img/page2_bg.png" style="display: block;position: absolute;width: 72%;height: auto;left: 14%;right: 14%;" />
                 </div>
                 
                 <div style="z-index:101;display: block;position: absolute;width: 100%;height:100%;text-align: center;">
-                    <img src="img/ex_1.jpg" style="display: block;position: absolute;width: 60%;height:80%;top: 10%;bottom: 10%;left: 20%;right: 20%;"
+                    <img src="img/ex_1.jpg" style="display: block;position: absolute;width: 60%;height:auto;top: 10%;bottom: 10%;left: 20%;right: 20%;"
                     id="ex_img_create" />
                 </div>
 
-                <img style="border-radius:50%;z-index:999;width: 10%;display: block;left:45%;position: absolute;top: 18%;" id="avatar_create" />
+                <img style="border-radius:50%;z-index:999;width: 10%;display: block;left:45%;position: absolute;top: 20%;" id="avatar_create" />
 
             </div>
 
@@ -190,20 +190,20 @@
     })
 
     saveDom.addEventListener("click", function () {
-        document.getElementById('final').hidden = false
+        const targetDom = document.getElementById('final')
         createDom.style.display = "block";
-        const targetDom = document.getElementById("final");
+        targetDom.hidden = false
         html2canvas(targetDom,{
             scale: window.devicePixelRatio,
-            height: targetDom.offsetHeight, // 下面解决当页面滚动之后生成图片出现白边问题
             width: targetDom.offsetWidth *0.72,
+            height: targetDom.offsetWidth*0.72/1242.0 *2161, // 下面解决当页面滚动之后生成图片出现白边问题
             x:targetDom.offsetWidth *0.14,
             useCORS: true // 【重要】开启跨域配置
         }).then(function(canvas) {
             var myImage = canvas.toDataURL("image/png");
                 createDom.style.display = "block";
                 document.getElementById("img").setAttribute("src", myImage);
-                document.getElementById('final').hidden = true
+                targetDom.hidden = true
         });
 
     })
