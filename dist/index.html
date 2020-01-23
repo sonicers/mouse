@@ -136,6 +136,7 @@
     const createCloseDom = document.getElementById("iv_create_close");
     const musicDom = document.getElementById("div_music");
     const audioDom = document.getElementById("audio");
+    const targetDom = document.getElementById('final')
 
     const THRESHOLD = 1000;
     const THRESHOLD_1 = 100;//兼容低版本
@@ -187,12 +188,11 @@
 
     createCloseDom.addEventListener("click", function () {//点击遮罩时，遮罩消失，分享缩小
         createDom.style.display = "none";
+        targetDom.hidden = false
     })
 
     saveDom.addEventListener("click", function () {
-        const targetDom = document.getElementById('final')
         createDom.style.display = "block";
-        targetDom.hidden = false
         html2canvas(targetDom,{
             scale: window.devicePixelRatio,
             width: targetDom.offsetWidth *0.72,
