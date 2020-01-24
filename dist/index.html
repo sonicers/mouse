@@ -108,7 +108,7 @@
 
             </div>
 
-            <div style="display: block;text-align: center;position: absolute;z-index: 1001;"style="width: 100%;height:72%; text-align: center;">
+            <div style="display: block;text-align: center;position: absolute;z-index: 1001;"style="width: 100%;height:72%; text-align: center;" id="terminal">
                 <img id="img" style="width: 72%;height:100%;left: 14%;"/>
             </div>
         </div>
@@ -135,7 +135,9 @@
     const createCloseDom = document.getElementById("iv_create_close");
     const musicDom = document.getElementById("div_music");
     const audioDom = document.getElementById("audio");
-    const targetDom = document.getElementById('final')
+    const targetDom = document.getElementById('final');
+    const terminalDom = document.getElementById('terminal');
+    
 
     const THRESHOLD = 1000;
     const THRESHOLD_1 = 100;//兼容低版本
@@ -187,7 +189,7 @@
 
     createCloseDom.addEventListener("click", function () {//点击遮罩时，遮罩消失，分享缩小
         createDom.style.display = "none";
-        targetDom.hidden = false
+        terminalDom.style.display = "none";
     })
 
     saveDom.addEventListener("click", function () {
@@ -202,7 +204,7 @@
             var myImage = canvas.toDataURL("image/png");
                 createDom.style.display = "block";
                 document.getElementById("img").setAttribute("src", myImage);
-                targetDom.hidden = true
+                terminalDom.style.display = "block";
         });
 
     })
