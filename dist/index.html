@@ -113,14 +113,13 @@
             </div>
         </div>
     </div>
-    <div id="container_2" style="height: 100%;background: gray;">
-        <p class="prompt" style="font-size: 40px;text-align: center;">请用竖屏展示</p>
-    </div>
-    <script type="text/javascript" src="https://s4.cnzz.com/z_stat.php?id=1278588606&web_id=1278588606"></script>
+    <div style="display: none;"> 
+        <script type="text/javascript" src="https://s4.cnzz.com/z_stat.php?id=1278588606&web_id=1278588606"></script>
+    </div>  
+    
 </body>
 <script type="text/javascript">
     const container_1_dom = document.getElementById("container_1");
-    const container_2_dom = document.getElementById("container_2");
     const showDom = document.getElementById("show");
     const jieqianDom = document.getElementsByClassName("jieqian");
     const explainDom = document.getElementById("explain");
@@ -254,8 +253,8 @@
     }
 
     function handleOrientation() {//横屏的时候
-        container_1_dom.style.display = "block";
-        container_2_dom.style.display = "none";
+        // container_1_dom.style.display = "block";
+        // container_2_dom.style.display = "none";
         // var winHei=window.innerHeight;
         // var winWid=window.innerWidth;
         // if(winWid>winHei){//横屏的时候

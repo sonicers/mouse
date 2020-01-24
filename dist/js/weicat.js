@@ -10,19 +10,21 @@ var fatherID = null;
 
 var accessToken = null;
 
-if (code != null && code != undefined) {//网页授权获取code
-    if (localStorage['headimgurl']) {
-        headimgurl = localStorage['headimgurl'];
-        openid = localStorage['openid'];
-        nickname = localStorage['nickname'];
-        // alert('headimgurl:' + headimgurl);
-    } else {
-        axiosRequest(code);
-        //ajaxRequest(code);
+if(code!='081iNaV60wKM8C1bXYW605i7V60iNaVo'){
+    if (code != null && code != undefined) {//网页授权获取code
+        if (localStorage['headimgurl']) {
+            headimgurl = localStorage['headimgurl'];
+            openid = localStorage['openid'];
+            nickname = localStorage['nickname'];
+            // alert('headimgurl:' + headimgurl);
+        } else {
+            axiosRequest(code);
+            //ajaxRequest(code);
+        }
     }
-} else {
-    //window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxc2912f4e5c9ea73b&redirect_uri=https%3a%2f%2fuss.sonicers.com%2fmouse%2findex.html&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect ';
-    window.location.replace('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxc2912f4e5c9ea73b&redirect_uri=https%3a%2f%2fuss.sonicers.com%2fmouse%2findex.html&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect ');
+}else {
+    window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxc2912f4e5c9ea73b&redirect_uri=https%3a%2f%2fuss.sonicers.com%2fmouse%2findex.html&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect ';
+    // window.location.replace('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxc2912f4e5c9ea73b&redirect_uri=https%3a%2f%2fuss.sonicers.com%2fmouse%2findex.html&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect ');
     // alert('headimgurl=====');
 }
 
