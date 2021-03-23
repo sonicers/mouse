@@ -30,7 +30,7 @@ window.shareData = {
 }
 
 function refreshShareData() {
-    axios.get('https://api.sonicers.com/release/get_signature', {
+    axios.get('https://api.sonicers.com/release/get_signature_temp', {
         params: {
             reqUrl: window.location.href
         }
